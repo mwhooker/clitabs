@@ -1,0 +1,16 @@
+{
+    "manifest_version": 2,
+    "name": "CLI for tabs",
+    "description": "Interact with tabs the unix way.",
+    "version": "0.0.1",
+    "background": {
+        "scripts": [
+            "app.js"
+        ],
+        "persistent": true
+    },
+    "permissions": [
+        "tabs",
+        "nativeMessaging"
+    ]
+}

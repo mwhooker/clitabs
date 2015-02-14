@@ -1,0 +1,9 @@
+{
+  "name": "com.mwhooker.clitabs",
+  "description": "CLI for tabs",
+  "path": "/Users/mwhooker/dev/tabcli/clitabs.py",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://iicokpakpadfdpdmaigbiifikeomnllm/"
+  ]
+}
