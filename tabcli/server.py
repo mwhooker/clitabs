@@ -1,15 +1,10 @@
-import StringIO
-import json
 import uuid
 import sys
 import threading
 
 from tabcli import rpc
-from flask import Flask
+from flask import Flask, json, jsonify
 
-
-stdin = sys.stdin
-sys.stdin = StringIO.StringIO()
 
 app = Flask(__name__)
 app.debug = True
@@ -23,7 +18,7 @@ def send_message(command, params=None):
     rpc.send_message(json.dumps(payload))
 
 def read_message():
-    msg_raw = rpc.read_message(stdin).encode('utf-8')
+    msg_raw = rpc.read_message(sys.stdin).encode('utf-8')
     msg = json.loads(msg_raw)
     return msg
 
@@ -33,7 +28,7 @@ def show_tabs():
     send_message('index')
     msg = read_message()
     rpc.log_message("received: " + msg['_id'])
-    return str(msg)
+    return jsonify(msg)
 
 def app_main():
     pass

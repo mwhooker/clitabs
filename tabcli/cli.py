@@ -4,7 +4,13 @@ import argparse
 BASE_URI = "http://localhost:5427"
 
 def show_tabs(args):
-    return make_request(BASE_URI)
+    windows = make_request(BASE_URI).json()
+    for window in windows['windows']:
+        for tab in window['tabs']:
+            print "%s\t%s\t%s" % (
+                window['id'],
+                tab['url'],
+                tab['title'])
 
 def make_request(endpoint, args=None):
     if args is None:
@@ -23,4 +29,4 @@ def init_parser():
 def main():
     parser = init_parser()
     args = parser.parse_args()
-    print args.func(args)
+    args.func(args)
