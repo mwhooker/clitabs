@@ -5,6 +5,7 @@
     "version": "0.0.1",
     "background": {
         "scripts": [
+            "underscore-min.js",
             "app.js"
         ],
         "persistent": true

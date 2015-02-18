@@ -2,7 +2,9 @@
 
 interact with chrome's tabs over the command line
 
+## install
 
+* need to copy com.mwhooker.clitabs to ~/Library/Application Support/Google/Chrome/NativeMessagingHosts
 
 
 ## examples

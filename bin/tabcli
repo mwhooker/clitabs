@@ -1,0 +1,19 @@
+#!/usr/bin/env python
+
+"""
+send_message('{"text": "starting"}')
+# In headless mode just send an echo message back.
+msg = '{"echo": %s}' % text
+send_message(msg.encode('utf-8'))
+"""
+
+import sys
+
+import tabcli.cli
+
+
+def main():
+    return tabcli.cli.main()
+
+if __name__ == '__main__':
+    sys.exit(main())

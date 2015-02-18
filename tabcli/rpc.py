@@ -1,8 +1,6 @@
-#!/usr/bin/env python
-
-
-import sys
+import json
 import struct
+import sys
 
 def send_message(message):
     log_message("sending: %s" % message)
@@ -16,15 +14,7 @@ def log_message(message):
     with open("/Users/mwhooker/dev/tabcli/log", "a+") as f:
         f.write(message)
 
-
-send_message('{"text": "starting"}')
-
-
-#for line in sys.stdin:
-#    send_message("got ur message.")
-#    log_message("input: %s" % line)
-# if __name__ == "__main__":
-while True:
+def read_message():
     # Read the message length (first 4 bytes).
     text_length_bytes = sys.stdin.read(4)
     if len(text_length_bytes) == 0:
@@ -32,6 +22,6 @@ while True:
     # Unpack message length as 4 byte integer.
     text_length = struct.unpack('i', text_length_bytes)[0]
     # Read the text (JSON object) of the message.
-    text = sys.stdin.read(text_length).decode('utf-8')
-    # In headless mode just send an echo message back.
-    send_message('{"echo": %s}' % text)
+    return sys.stdin.read(text_length).decode('utf-8')
+
+
