@@ -13,15 +13,16 @@ def send_message(message):
 def log_message(message):
     with open("/Users/mwhooker/dev/tabcli/log", "a+") as f:
         f.write(message)
+        f.write('\n')
 
-def read_message():
+def read_message(stdin):
     # Read the message length (first 4 bytes).
-    text_length_bytes = sys.stdin.read(4)
+    text_length_bytes = stdin.read(4)
     if len(text_length_bytes) == 0:
         sys.exit(0)
     # Unpack message length as 4 byte integer.
     text_length = struct.unpack('i', text_length_bytes)[0]
     # Read the text (JSON object) of the message.
-    return sys.stdin.read(text_length).decode('utf-8')
+    return stdin.read(text_length).decode('utf-8')
 
 
